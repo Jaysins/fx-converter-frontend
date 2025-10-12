@@ -1,0 +1,111 @@
+# ========================
+# Node
+# ========================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+package-lock.json
+yarn.lock
+.pnpm-debug.log
+
+# ========================
+# Vite build output
+# ========================
+dist/
+build/
+vite.config.ts.timestamp-*
+*.tsbuildinfo
+
+# ========================
+# Logs
+# ========================
+logs
+*.log
+*.log.*
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# ========================
+# Environment variables
+# ========================
+.env
+.env.*
+!.env.example
+
+# ========================
+# Testing
+# ========================
+coverage/
+*.lcov
+jest-cache/
+jest-resources/
+.vitest/
+*.spec.ts
+*.spec.tsx
+*.test.ts
+*.test.tsx
+
+# ========================
+# Editor / OS
+# ========================
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo
+*.bak
+*.tmp
+
+# ========================
+# Cache / Misc
+# ========================
+.cache/
+.eslintcache
+.stylelintcache
+.turbo/
+vite-plugin-*
+temp/
+tmp/
+*.pid
+*.seed
+*.pid.lock
+*.tgz
+*.orig
+
+# ========================
+# Prettier / Lint
+# ========================
+.prettier-cache/
+.tscache/
+.nyc_output/
+
+# ========================
+# Coverage / Reports
+# ========================
+coverage/
+reports/
+*.lcov
+report.xml
+
+# ========================
+# Local dev tools
+# ========================
+*.local
+*.pem
+*.key
+*.crt
+
+# ========================
+# VSCode settings
+# ========================
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+!.vscode/launch.json
+!.vscode/tasks.json
