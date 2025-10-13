@@ -1,73 +1,121 @@
-# React + TypeScript + Vite
+# FX Currency Converter
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, full-stack currency conversion application built with React, TypeScript, and Tailwind CSS. Features real-time exchange rates, transaction history, analytics dashboard, and beautiful data visualizations.
 
-Currently, two official plugins are available:
+![Dashboard Screenshot](./screenshots/dashboard.png)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Features
 
-## React Compiler
+### Core Features
+- **Real-time Currency Conversion**: Convert between 10 major currencies (USD, EUR, GBP, NGN, JPY, CAD, AUD, CHF, CNY, INR)
+- **Transaction History**: View all past conversions with pagination and filtering
+- **Analytics Dashboard**: Track conversion trends with interactive charts
+- **User Authentication**: Secure JWT-based authentication system
+- **Responsive Design**: Fully optimized for mobile, tablet, and desktop
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### Technical Highlights
+- **Type-Safe**: Full TypeScript implementation
+- **Modern UI**: Clean, accessible interface with Tailwind CSS
+- **Real-time Data**: Live exchange rates from backend API
+- **Interactive Charts**: Beautiful visualizations with Recharts
+- **Error Handling**: Comprehensive error states and user feedback
+- **Accessibility**: WCAG AA compliant with keyboard navigation
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 📋 Prerequisites
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- **Node.js**: v16 or higher
+- **npm**: v7 or higher
+- **Backend API**: Running on `http://localhost:3000`
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+---
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## 🛠️ Installation & Setup
+
+### 1. Clone the Repository
+
+```bash
+git clone <your-repo-url>
+cd fx-converter
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### 2. Install Dependencies
+```bash
+npm install
 ```
+
+### 3. Start Development Server
+```bash
+npm run dev
+The application will be available at http://localhost:5173
+```
+### 4. Build for Production
+```bash
+npm run build
+npm run preview
+```
+
+### Architecture & Design Decisions
+
+### 1. **Component Architecture**
+
+* **Atomic Design:**
+  UI components are split into reusable primitives (`ui/`) and feature-specific components (`features/`).
+
+* **Composition Pattern:**
+  Components like `Card` are built with sub-components (`CardHeader`, `CardContent`) for flexibility and clarity.
+
+* **Single Responsibility Principle:**
+  Each component is designed to handle a single concern to improve readability and maintainability.
+
+
+### 2. **State Management**
+
+* **Context API:**
+  Used for global authentication state — simple and sufficient for this application.
+
+* **Custom Hooks:**
+  Encapsulate business logic and API interactions (e.g., `useConversion`, `useTransactions`).
+
+* **Local State:**
+  Managed with `useState` for UI-specific logic such as forms, modals, and toggles.
+
+### 3. **API Layer**
+
+* **Service Classes:**
+  All API calls are centralized within dedicated service files (`auth.service.ts`, `conversion.service.ts`).
+
+* **Axios Interceptors:**
+  Automatically handle token injection and global error interception (e.g., `401 Unauthorized`).
+
+* **Type Safety:**
+  Full TypeScript support ensures reliable request and response typing.
+
+### 4. **Error Handling**
+
+**Handled at Multiple Levels:**
+
+* **Network Level:** Axios interceptors for HTTP errors
+* **Component Level:** `try-catch` blocks within hooks
+* **UI Level:** Toast notifications and inline error displays
+* **Global Level:** React Error Boundary for uncaught exceptions
+
+**User-Friendly Messages:**
+All technical errors are translated into clear, human-readable messages.
+
+
+## 🎯 Key Trade-offs & Decisions
+
+| Decision                           | Why We Chose It                               | Trade-off                              |
+| ---------------------------------- | --------------------------------------------- | -------------------------------------- |
+| **Context API over Redux**         | Simpler setup, sufficient for auth state      | Less powerful for complex global state |
+| **Custom Hooks over React Query**  | Full control, zero dependency overhead        | Manual cache management                |
+| **Recharts for Visualizations**    | React-first design, responsive, rich features | Slightly larger bundle size            |
+| **localStorage for Token Storage** | Simple, persistent across tabs                | Less secure than httpOnly cookies      |
+| **Client-Side Routing**            | SPA experience, smooth navigation             | Limited SEO capabilities               |
+| **Feature-Based Folder Structure** | Scalable, organized, co-located logic         | Slightly deeper nesting                |
+| **Tailwind CSS over CSS Modules**  | Faster UI development, design consistency     | Can get verbose in large components    |
+
+
