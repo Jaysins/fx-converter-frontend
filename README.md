@@ -23,7 +23,7 @@ A modern, full-stack currency conversion application built with React, TypeScrip
 
 ## 📋 Prerequisites
 
-- **Node.js**: v16 or higher
+- **Node.js**: v20 or higher
 - **npm**: v7 or higher
 - **Backend API**: Running on `http://localhost:3000`
 
