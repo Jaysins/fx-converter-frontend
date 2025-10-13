@@ -47,7 +47,7 @@ export const CURRENCY_NAMES: Record<SupportedCurrency, string> = {
 };
 
 // API Configuration
-export const API_BASE_URL = 'http://localhost:3000/api/v1';
+export const API_BASE_URL = 'https://fx-converter-backend.onrender.com/api/v1';
 
 // Time filter options for dashboard
 export const TIME_FILTER_OPTIONS = [
