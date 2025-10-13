@@ -2,8 +2,6 @@
 
 A modern, full-stack currency conversion application built with React, TypeScript, and Tailwind CSS. Features real-time exchange rates, transaction history, analytics dashboard, and beautiful data visualizations.
 
-![Dashboard Screenshot](./screenshots/dashboard.png)
-
 ## 🚀 Features
 
 ### Core Features
